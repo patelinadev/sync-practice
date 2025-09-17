@@ -24,17 +24,20 @@ def draw_equilateral_triangle(base_length: int):
     result = ""
     row = (base_length + 1) // 2
     for i in range(row):
-        left_space = row - i
+        left_space = row - i - 1
         star = 2 * i + 1
         result += " " * left_space
         result += star * "*"
+        result += " " * (base_length - left_space - star)
+        result += "\n"
     return result
 
-def draw_isosceles_triagnle01(base_length: int):
+
+def draw_isosceles_triangle01(base_length: int):
     result = ""
     row = (base_length + 1) // 2
     for i in range(row):
-        left_space = row - i
+        left_space = row - i - 1
         star = 2 * i + 1
         result += " " * left_space
         result += star * "*"
@@ -52,7 +55,7 @@ def draw_isosceles_triangle02(base_length: int, height: int):
         result += "\n"
     return result
 
-def draw_hollow_isosceles_trangle01(base_length: int):
+def draw_hollow_isosceles_triangle01(base_length: int):
     result = ""
     row = (base_length + 1) // 2
     for i in range(row):
@@ -71,7 +74,7 @@ def draw_hollow_isosceles_trangle01(base_length: int):
             result += "\n"
     return result
 
-def draw_hollow_isosceles_trangle02(base_length: int, height: int):
+def draw_hollow_isosceles_triangle02(base_length: int, height: int):
     result = ""
     growth_rate = (base_length - 1) / (2 * (height - 1))
     for i in range(height):

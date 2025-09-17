@@ -1,14 +1,33 @@
 from fastapi import APIRouter
+from dto import *
+from service.geometry_service import geometry_service
 
-# 创建一个临时的、空的router
-# 即使我们暂时没有实现任何API，这个文件也需要提供一个router对象
-# 以便 api/v1/__init__.py 能够成功导入它。
 router = APIRouter(
-    prefix="/triangles",
-    tags=["Triangles (Not Implemented)"], # 在文档中标记为“未实现”
+    prefix="/triangle",
+    tags=["triangle"]
 )
 
-# 未来您可以在这里添加关于三角形的API端点
-# @router.post("/draw-isosceles")
-# async def draw_isosceles_triangle_endpoint(...):
-#     pass
+@router.post("/draw_equilateral_triangle",response_model = EquilateralTriangleResponseDto)
+async def draw_equilateral_triangle(request_dto: EquilateralTriangleRequestDto):
+    ascii_shape = geometry_service.draw_equilateral_triangle(request_dto)
+    return EquilateralTriangleResponseDto(result = ascii_shape)
+
+@router.post("/draw_isosceles_triangle01", response_model = IsoscelesTriangle01ResponseDto)
+async def draw_equilateral_triangle01(request_dto: IsoscelesTriangle01RequestDto):
+    ascii_shape = geometry_service.draw_isosceles_triangle01(request_dto)
+    return IsoscelesTriangle01ResponseDto(result = ascii_shape)
+
+@router.post("/draw_isosceles_triangle02", response_model = IsoscelesTriangle02ResponseDto)
+async def draw_isosceles_triangle02(request_dto: IsoscelesTriangle02RequestDto):
+    ascii_shape = geometry_service.draw_isosceles_triangle02(request_dto)
+    return IsoscelesTriangle02ResponseDto(result = ascii_shape)
+
+@router.post("/draw_hollow_isosceles_triangle01", response_model = HollowIsoscelesTriangle01ResponseDto)
+async def draw_hollow_isosceles_triangle01(request_dto: HollowIsoscelesTriangle01RequestDto):
+    ascii_shape = geometry_service.draw_hollow_isosceles_triangle01(request_dto)
+    return HollowIsoscelesTriangle01ResponseDto(result = ascii_shape)
+
+@router.post("/draw_hollow_isosceles_triangle02", response_model = HollowIsoscelesTriangle02ResponseDto)
+async def draw_hollow_isosceles_triangle02(request_dto: HollowIsoscelesTriangle02RequestDto):
+    ascii_shape = geometry_service.draw_hollow_isosceles_triangle02(request_dto)
+    return HollowIsoscelesTriangle02ResponseDto(result = ascii_shape)
