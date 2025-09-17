@@ -45,3 +45,28 @@ def test_draw_hollow_isosceles_triangle02_05():
     expected_output = "  *\n * *\n*****\n"
     result = geometry_service.draw_hollow_isosceles_triangle02(request)
     assert result == expected_output
+
+def test_draw_trapezoid_09():
+    request = TrapezoidRequestDto(base_length=9, height=4)
+    expected_output = "   ***\n  *****\n *******\n*********\n"
+    result = geometry_service.draw_trapezoid(request)
+    assert result == expected_output
+
+def test_draw_diamond_07():
+    request = DiamondRequestDto(side_length=7)
+    expected_output = "   *\n  ***\n *****\n*******\n *****\n  ***\n   *\n"
+    result = geometry_service.draw_diamond(request)
+    assert result == expected_output
+
+def test_draw_hollow_diamond_07():
+    request = HollowDiamondRequestDto(side_length=7)
+    expected_output = "   *   \n  * *\n  *   *\n  *     *\n *   *\n  * *\n   *   \n"
+    result = geometry_service.draw_hollow_diamond(request)
+    assert result == expected_output
+
+def test_draw_hollow_rectangle_diamond_07():
+    request = HollowRectangleDiamondRequestDto(side_length=7)
+    expected_output = "*********\n**** ****\n***   ***\n**     **\n*       *\n**     **\n***   ***\n**** ****\n*********\n"
+    result = geometry_service.draw_hollow_rectangle_diamond(request)
+    assert result == expected_output
+
