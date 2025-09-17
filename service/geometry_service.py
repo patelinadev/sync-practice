@@ -41,5 +41,9 @@ class GeometryService:
     def draw_hexagon(self, request_dto: HexagonRequestDto) -> str:
         return draw_hexagon(side_length = request_dto.side_length)
 
-# instance
+# --- Create dependency provider ---
+def get_geometry_service() -> GeometryService:
+    return GeometryService()
+
+# --- Instance ---
 geometry_service = GeometryService()
