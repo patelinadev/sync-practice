@@ -129,7 +129,7 @@ def draw_hollow_diamond(side_length: int):
         side_length + 1
     upper_row = (side_length + 1) // 2
     lower_row = upper_row - 1
-    for i in(upper_row):
+    for i in range(upper_row):
         if i == 0:
             half_space = (side_length - 1) // 2
             result += " " * half_space
@@ -161,22 +161,27 @@ def draw_hollow_diamond(side_length: int):
             result += "\n"
     return result
 
-def draw_hollow_rectangle_with_diamond(side_length: int):
-    result = ""
+def draw_hollow_rectangle_diamond(side_length: int):
     if (side_length + 1) // 2 == 0:
         side_length + 1
+
     rectangle_col = rectangle_row = side_length + 2
     center_x = (rectangle_col - 1) // 2
     center_y = (rectangle_row - 1) // 2
     diamond_raduis = (side_length - 1) // 2
+
+    result = ""
+
     for i in range(rectangle_row):
+        row_string = ""
         for j in  range(rectangle_col):
             distance = abs(i - center_y) + abs(j - center_x)
             if distance <= diamond_raduis:
-                result += " "
+                row_string += " "
             else:
-                result += "*"
-            result += "\n"
+                row_string += "*"
+
+        result += row_string + "\n"
     return result
 
 def hexagon(side_length: int):
